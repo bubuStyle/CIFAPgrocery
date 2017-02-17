@@ -1,3 +1,22 @@
-<h1>
-  {{title}}
-</h1>
+<h1>{{title}}</h1>
+
+<!-- Binding de l'évènement submit' -->
+<form (submit)="addNewItem(newItem)" >
+
+  <!-- Utilisation du ngModel pour faire du data binding dans les deux sens -->
+  <input type="text" placeholder="Définir un type" [(ngModel)]="newItem.type"  [ngModelOptions]="{standalone: true}" required>
+  <input type="text" placeholder="Donner un nom" [(ngModel)]="newItem.name" [ngModelOptions]="{standalone: true}" required>
+  <textarea placeholder="Ajouter un commentaire" [(ngModel)]="newItem.comment" [ngModelOptions]="{standalone: true}" required></textarea>
+
+  <input type="submit">
+
+</form>
+
+<article *ngFor="let item of myCollection" >
+
+  <!-- Binding des données de la collection de données -->
+  <p>{{item.type}}</p>
+  <p>{{item.name}}</p>
+  <p>{{item.comment}}</p>
+  <hr>
+</article>
